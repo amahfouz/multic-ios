@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8399B72F1922A5B600C29958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B72E1922A5B600C29958 /* Foundation.framework */; };
+		8399B7311922A5B600C29958 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B7301922A5B600C29958 /* CoreGraphics.framework */; };
+		8399B7331922A5B600C29958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B7321922A5B600C29958 /* UIKit.framework */; };
+		8399B7391922A5B600C29958 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8399B7371922A5B600C29958 /* InfoPlist.strings */; };
+		8399B73B1922A5B600C29958 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8399B73A1922A5B600C29958 /* main.m */; };
+		8399B73F1922A5B600C29958 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8399B73E1922A5B600C29958 /* AppDelegate.m */; };
+		8399B74A1922A5B600C29958 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8399B7491922A5B600C29958 /* Images.xcassets */; };
+		8399B7511922A5B600C29958 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B7501922A5B600C29958 /* XCTest.framework */; };
+		8399B7521922A5B600C29958 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B72E1922A5B600C29958 /* Foundation.framework */; };
+		8399B7531922A5B600C29958 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399B7321922A5B600C29958 /* UIKit.framework */; };
+		83AB869A1936A7D10017AF6A /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AB86991936A7D10017AF6A /* GridCell.xib */; };
+		83AE6FC519414CBF00904C9B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE6FC419414CBF00904C9B /* libz.dylib */; };
+		83AE6FC719414CCB00904C9B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AE6FC619414CCB00904C9B /* Security.framework */; };
+		83B2CA52193EA3B900D8CE14 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B2CA51193EA3B900D8CE14 /* OptionsViewController.xib */; };
+		83B2CA55193EA40700D8CE14 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B2CA54193EA40700D8CE14 /* OptionsViewController.m */; };
+		83B5FE78193FB42C0013F417 /* AlternatingMutlicMoveAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE53193FB42C0013F417 /* AlternatingMutlicMoveAlgo.m */; };
+		83B5FE79193FB42C0013F417 /* BoardDef.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE55193FB42C0013F417 /* BoardDef.m */; };
+		83B5FE7A193FB42C0013F417 /* BoardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE57193FB42C0013F417 /* BoardState.m */; };
+		83B5FE7B193FB42C0013F417 /* Difficulty.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE59193FB42C0013F417 /* Difficulty.m */; };
+		83B5FE7C193FB42C0013F417 /* Four.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE5B193FB42C0013F417 /* Four.m */; };
+		83B5FE7D193FB42C0013F417 /* Knob.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE5D193FB42C0013F417 /* Knob.m */; };
+		83B5FE7E193FB42C0013F417 /* Knobs.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE5F193FB42C0013F417 /* Knobs.m */; };
+		83B5FE7F193FB42C0013F417 /* MinimaxMulticMoveAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE61193FB42C0013F417 /* MinimaxMulticMoveAlgo.m */; };
+		83B5FE80193FB42C0013F417 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE63193FB42C0013F417 /* Move.m */; };
+		83B5FE81193FB42C0013F417 /* MoveIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE65193FB42C0013F417 /* MoveIterator.m */; };
+		83B5FE82193FB42C0013F417 /* MulticException.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE67193FB42C0013F417 /* MulticException.m */; };
+		83B5FE83193FB42C0013F417 /* MulticGameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE69193FB42C0013F417 /* MulticGameCell.m */; };
+		83B5FE84193FB42C0013F417 /* MulticLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE6B193FB42C0013F417 /* MulticLog.m */; };
+		83B5FE85193FB42C0013F417 /* MulticMoveAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE6D193FB42C0013F417 /* MulticMoveAlgo.m */; };
+		83B5FE86193FB42C0013F417 /* MulticRandomAlgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE6F193FB42C0013F417 /* MulticRandomAlgo.m */; };
+		83B5FE87193FB42C0013F417 /* MutableGameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE71193FB42C0013F417 /* MutableGameState.m */; };
+		83B5FE88193FB42C0013F417 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE73193FB42C0013F417 /* Player.m */; };
+		83B5FE89193FB42C0013F417 /* XGameGridUiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE75193FB42C0013F417 /* XGameGridUiModel.m */; };
+		83B5FE8A193FB42C0013F417 /* XGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE77193FB42C0013F417 /* XGameModel.m */; };
+		83B5FE8D193FF0F00013F417 /* MulticPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5FE8C193FF0F00013F417 /* MulticPrefs.m */; };
+		83C5092F192999C60030CEC4 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C5092D192999C60030CEC4 /* GameViewController.m */; };
+		83D289EF19331812009A53F2 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D289EE19331812009A53F2 /* GameView.xib */; };
+		83E8E932199448DA0090568D /* MulticUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E8E931199448DA0090568D /* MulticUtils.m */; };
+		83EB0FE4193D517B00B4CE95 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EB0FE2193D517B00B4CE95 /* HelpViewController.m */; };
+		83EB0FE5193D517B00B4CE95 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83EB0FE3193D517B00B4CE95 /* HelpViewController.xib */; };
+		83EB0FE7193D605800B4CE95 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 83EB0FE6193D605800B4CE95 /* help.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8399B7541922A5B600C29958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8399B7231922A5B600C29958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8399B72A1922A5B600C29958;
+			remoteInfo = Multic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8399B72B1922A5B600C29958 /* Multic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Multic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8399B72E1922A5B600C29958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8399B7301922A5B600C29958 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8399B7321922A5B600C29958 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8399B7361922A5B600C29958 /* Multic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Multic-Info.plist"; sourceTree = "<group>"; };
+		8399B7381922A5B600C29958 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8399B73A1922A5B600C29958 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8399B73C1922A5B600C29958 /* Multic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Multic-Prefix.pch"; sourceTree = "<group>"; };
+		8399B73D1922A5B600C29958 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = src/AppDelegate.h; sourceTree = "<group>"; };
+		8399B73E1922A5B600C29958 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = src/AppDelegate.m; sourceTree = "<group>"; };
+		8399B7491922A5B600C29958 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = src/Images.xcassets; sourceTree = "<group>"; };
+		8399B74F1922A5B600C29958 /* MulticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MulticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8399B7501922A5B600C29958 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		83AB86991936A7D10017AF6A /* GridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GridCell.xib; path = src/GridCell.xib; sourceTree = "<group>"; };
+		83AE6FC419414CBF00904C9B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		83AE6FC619414CCB00904C9B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		83B2CA51193EA3B900D8CE14 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OptionsViewController.xib; path = src/OptionsViewController.xib; sourceTree = "<group>"; };
+		83B2CA53193EA40700D8CE14 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsViewController.h; path = src/OptionsViewController.h; sourceTree = "<group>"; };
+		83B2CA54193EA40700D8CE14 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsViewController.m; path = src/OptionsViewController.m; sourceTree = "<group>"; };
+		83B5FE52193FB42C0013F417 /* AlternatingMutlicMoveAlgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlternatingMutlicMoveAlgo.h; sourceTree = "<group>"; };
+		83B5FE53193FB42C0013F417 /* AlternatingMutlicMoveAlgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlternatingMutlicMoveAlgo.m; sourceTree = "<group>"; };
+		83B5FE54193FB42C0013F417 /* BoardDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardDef.h; sourceTree = "<group>"; };
+		83B5FE55193FB42C0013F417 /* BoardDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardDef.m; sourceTree = "<group>"; };
+		83B5FE56193FB42C0013F417 /* BoardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardState.h; sourceTree = "<group>"; };
+		83B5FE57193FB42C0013F417 /* BoardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardState.m; sourceTree = "<group>"; };
+		83B5FE58193FB42C0013F417 /* Difficulty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Difficulty.h; sourceTree = "<group>"; };
+		83B5FE59193FB42C0013F417 /* Difficulty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Difficulty.m; sourceTree = "<group>"; };
+		83B5FE5A193FB42C0013F417 /* Four.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Four.h; sourceTree = "<group>"; };
+		83B5FE5B193FB42C0013F417 /* Four.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Four.m; sourceTree = "<group>"; };
+		83B5FE5C193FB42C0013F417 /* Knob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knob.h; sourceTree = "<group>"; };
+		83B5FE5D193FB42C0013F417 /* Knob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knob.m; sourceTree = "<group>"; };
+		83B5FE5E193FB42C0013F417 /* Knobs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Knobs.h; sourceTree = "<group>"; };
+		83B5FE5F193FB42C0013F417 /* Knobs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Knobs.m; sourceTree = "<group>"; };
+		83B5FE60193FB42C0013F417 /* MinimaxMulticMoveAlgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinimaxMulticMoveAlgo.h; sourceTree = "<group>"; };
+		83B5FE61193FB42C0013F417 /* MinimaxMulticMoveAlgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinimaxMulticMoveAlgo.m; sourceTree = "<group>"; };
+		83B5FE62193FB42C0013F417 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
+		83B5FE63193FB42C0013F417 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
+		83B5FE64193FB42C0013F417 /* MoveIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveIterator.h; sourceTree = "<group>"; };
+		83B5FE65193FB42C0013F417 /* MoveIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveIterator.m; sourceTree = "<group>"; };
+		83B5FE66193FB42C0013F417 /* MulticException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticException.h; sourceTree = "<group>"; };
+		83B5FE67193FB42C0013F417 /* MulticException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticException.m; sourceTree = "<group>"; };
+		83B5FE68193FB42C0013F417 /* MulticGameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticGameCell.h; sourceTree = "<group>"; };
+		83B5FE69193FB42C0013F417 /* MulticGameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticGameCell.m; sourceTree = "<group>"; };
+		83B5FE6A193FB42C0013F417 /* MulticLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticLog.h; sourceTree = "<group>"; };
+		83B5FE6B193FB42C0013F417 /* MulticLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticLog.m; sourceTree = "<group>"; };
+		83B5FE6C193FB42C0013F417 /* MulticMoveAlgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticMoveAlgo.h; sourceTree = "<group>"; };
+		83B5FE6D193FB42C0013F417 /* MulticMoveAlgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticMoveAlgo.m; sourceTree = "<group>"; };
+		83B5FE6E193FB42C0013F417 /* MulticRandomAlgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticRandomAlgo.h; sourceTree = "<group>"; };
+		83B5FE6F193FB42C0013F417 /* MulticRandomAlgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MulticRandomAlgo.m; sourceTree = "<group>"; };
+		83B5FE70193FB42C0013F417 /* MutableGameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableGameState.h; sourceTree = "<group>"; };
+		83B5FE71193FB42C0013F417 /* MutableGameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableGameState.m; sourceTree = "<group>"; };
+		83B5FE72193FB42C0013F417 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		83B5FE73193FB42C0013F417 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		83B5FE74193FB42C0013F417 /* XGameGridUiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGameGridUiModel.h; sourceTree = "<group>"; };
+		83B5FE75193FB42C0013F417 /* XGameGridUiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGameGridUiModel.m; sourceTree = "<group>"; };
+		83B5FE76193FB42C0013F417 /* XGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGameModel.h; sourceTree = "<group>"; };
+		83B5FE77193FB42C0013F417 /* XGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGameModel.m; sourceTree = "<group>"; };
+		83B5FE8B193FF0F00013F417 /* MulticPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MulticPrefs.h; path = src/MulticPrefs.h; sourceTree = "<group>"; };
+		83B5FE8C193FF0F00013F417 /* MulticPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MulticPrefs.m; path = src/MulticPrefs.m; sourceTree = "<group>"; };
+		83C5092C192999C60030CEC4 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = src/GameViewController.h; sourceTree = "<group>"; };
+		83C5092D192999C60030CEC4 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = src/GameViewController.m; sourceTree = "<group>"; };
+		83D289EE19331812009A53F2 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameView.xib; path = src/GameView.xib; sourceTree = "<group>"; };
+		83E8E930199448DA0090568D /* MulticUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MulticUtils.h; path = src/MulticUtils.h; sourceTree = "<group>"; };
+		83E8E931199448DA0090568D /* MulticUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MulticUtils.m; path = src/MulticUtils.m; sourceTree = "<group>"; };
+		83EB0FE1193D517B00B4CE95 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = src/HelpViewController.h; sourceTree = "<group>"; };
+		83EB0FE2193D517B00B4CE95 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = src/HelpViewController.m; sourceTree = "<group>"; };
+		83EB0FE3193D517B00B4CE95 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = src/HelpViewController.xib; sourceTree = "<group>"; };
+		83EB0FE6193D605800B4CE95 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8399B7281922A5B600C29958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83AE6FC719414CCB00904C9B /* Security.framework in Frameworks */,
+				83AE6FC519414CBF00904C9B /* libz.dylib in Frameworks */,
+				8399B7311922A5B600C29958 /* CoreGraphics.framework in Frameworks */,
+				8399B7331922A5B600C29958 /* UIKit.framework in Frameworks */,
+				8399B72F1922A5B600C29958 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8399B74C1922A5B600C29958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8399B7511922A5B600C29958 /* XCTest.framework in Frameworks */,
+				8399B7531922A5B600C29958 /* UIKit.framework in Frameworks */,
+				8399B7521922A5B600C29958 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8399B7221922A5B600C29958 = {
+			isa = PBXGroup;
+			children = (
+				83B5FE51193FB42C0013F417 /* Converted */,
+				8399B73D1922A5B600C29958 /* AppDelegate.h */,
+				8399B73E1922A5B600C29958 /* AppDelegate.m */,
+				83C5092C192999C60030CEC4 /* GameViewController.h */,
+				83C5092D192999C60030CEC4 /* GameViewController.m */,
+				83D289EE19331812009A53F2 /* GameView.xib */,
+				83AB86991936A7D10017AF6A /* GridCell.xib */,
+				83EB0FE1193D517B00B4CE95 /* HelpViewController.h */,
+				83EB0FE2193D517B00B4CE95 /* HelpViewController.m */,
+				83EB0FE3193D517B00B4CE95 /* HelpViewController.xib */,
+				83B5FE8B193FF0F00013F417 /* MulticPrefs.h */,
+				83B5FE8C193FF0F00013F417 /* MulticPrefs.m */,
+				83E8E930199448DA0090568D /* MulticUtils.h */,
+				83E8E931199448DA0090568D /* MulticUtils.m */,
+				83B2CA53193EA40700D8CE14 /* OptionsViewController.h */,
+				83B2CA54193EA40700D8CE14 /* OptionsViewController.m */,
+				83B2CA51193EA3B900D8CE14 /* OptionsViewController.xib */,
+				8399B7491922A5B600C29958 /* Images.xcassets */,
+				8399B7351922A5B600C29958 /* Supporting Files */,
+				8399B72D1922A5B600C29958 /* Frameworks */,
+				8399B72C1922A5B600C29958 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8399B72C1922A5B600C29958 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8399B72B1922A5B600C29958 /* Multic.app */,
+				8399B74F1922A5B600C29958 /* MulticTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8399B72D1922A5B600C29958 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83AE6FC619414CCB00904C9B /* Security.framework */,
+				83AE6FC419414CBF00904C9B /* libz.dylib */,
+				8399B72E1922A5B600C29958 /* Foundation.framework */,
+				8399B7301922A5B600C29958 /* CoreGraphics.framework */,
+				8399B7321922A5B600C29958 /* UIKit.framework */,
+				8399B7501922A5B600C29958 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8399B7351922A5B600C29958 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8399B7361922A5B600C29958 /* Multic-Info.plist */,
+				8399B7371922A5B600C29958 /* InfoPlist.strings */,
+				8399B73A1922A5B600C29958 /* main.m */,
+				8399B73C1922A5B600C29958 /* Multic-Prefix.pch */,
+				83EB0FE6193D605800B4CE95 /* help.html */,
+			);
+			name = "Supporting Files";
+			path = src;
+			sourceTree = "<group>";
+		};
+		83B5FE51193FB42C0013F417 /* Converted */ = {
+			isa = PBXGroup;
+			children = (
+				83B5FE52193FB42C0013F417 /* AlternatingMutlicMoveAlgo.h */,
+				83B5FE53193FB42C0013F417 /* AlternatingMutlicMoveAlgo.m */,
+				83B5FE54193FB42C0013F417 /* BoardDef.h */,
+				83B5FE55193FB42C0013F417 /* BoardDef.m */,
+				83B5FE56193FB42C0013F417 /* BoardState.h */,
+				83B5FE57193FB42C0013F417 /* BoardState.m */,
+				83B5FE58193FB42C0013F417 /* Difficulty.h */,
+				83B5FE59193FB42C0013F417 /* Difficulty.m */,
+				83B5FE5A193FB42C0013F417 /* Four.h */,
+				83B5FE5B193FB42C0013F417 /* Four.m */,
+				83B5FE5C193FB42C0013F417 /* Knob.h */,
+				83B5FE5D193FB42C0013F417 /* Knob.m */,
+				83B5FE5E193FB42C0013F417 /* Knobs.h */,
+				83B5FE5F193FB42C0013F417 /* Knobs.m */,
+				83B5FE60193FB42C0013F417 /* MinimaxMulticMoveAlgo.h */,
+				83B5FE61193FB42C0013F417 /* MinimaxMulticMoveAlgo.m */,
+				83B5FE62193FB42C0013F417 /* Move.h */,
+				83B5FE63193FB42C0013F417 /* Move.m */,
+				83B5FE64193FB42C0013F417 /* MoveIterator.h */,
+				83B5FE65193FB42C0013F417 /* MoveIterator.m */,
+				83B5FE66193FB42C0013F417 /* MulticException.h */,
+				83B5FE67193FB42C0013F417 /* MulticException.m */,
+				83B5FE68193FB42C0013F417 /* MulticGameCell.h */,
+				83B5FE69193FB42C0013F417 /* MulticGameCell.m */,
+				83B5FE6A193FB42C0013F417 /* MulticLog.h */,
+				83B5FE6B193FB42C0013F417 /* MulticLog.m */,
+				83B5FE6C193FB42C0013F417 /* MulticMoveAlgo.h */,
+				83B5FE6D193FB42C0013F417 /* MulticMoveAlgo.m */,
+				83B5FE6E193FB42C0013F417 /* MulticRandomAlgo.h */,
+				83B5FE6F193FB42C0013F417 /* MulticRandomAlgo.m */,
+				83B5FE70193FB42C0013F417 /* MutableGameState.h */,
+				83B5FE71193FB42C0013F417 /* MutableGameState.m */,
+				83B5FE72193FB42C0013F417 /* Player.h */,
+				83B5FE73193FB42C0013F417 /* Player.m */,
+				83B5FE74193FB42C0013F417 /* XGameGridUiModel.h */,
+				83B5FE75193FB42C0013F417 /* XGameGridUiModel.m */,
+				83B5FE76193FB42C0013F417 /* XGameModel.h */,
+				83B5FE77193FB42C0013F417 /* XGameModel.m */,
+			);
+			name = Converted;
+			path = src/Converted;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8399B72A1922A5B600C29958 /* Multic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8399B7601922A5B600C29958 /* Build configuration list for PBXNativeTarget "Multic" */;
+			buildPhases = (
+				8399B7271922A5B600C29958 /* Sources */,
+				8399B7281922A5B600C29958 /* Frameworks */,
+				8399B7291922A5B600C29958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Multic;
+			productName = Multic;
+			productReference = 8399B72B1922A5B600C29958 /* Multic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8399B74E1922A5B600C29958 /* MulticTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8399B7631922A5B600C29958 /* Build configuration list for PBXNativeTarget "MulticTests" */;
+			buildPhases = (
+				8399B74B1922A5B600C29958 /* Sources */,
+				8399B74C1922A5B600C29958 /* Frameworks */,
+				8399B74D1922A5B600C29958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8399B7551922A5B600C29958 /* PBXTargetDependency */,
+			);
+			name = MulticTests;
+			productName = MulticTests;
+			productReference = 8399B74F1922A5B600C29958 /* MulticTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8399B7231922A5B600C29958 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Ayman Mahfouz";
+				TargetAttributes = {
+					8399B74E1922A5B600C29958 = {
+						TestTargetID = 8399B72A1922A5B600C29958;
+					};
+				};
+			};
+			buildConfigurationList = 8399B7261922A5B600C29958 /* Build configuration list for PBXProject "Multic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8399B7221922A5B600C29958;
+			productRefGroup = 8399B72C1922A5B600C29958 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8399B72A1922A5B600C29958 /* Multic */,
+				8399B74E1922A5B600C29958 /* MulticTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8399B7291922A5B600C29958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8399B74A1922A5B600C29958 /* Images.xcassets in Resources */,
+				83EB0FE7193D605800B4CE95 /* help.html in Resources */,
+				83B2CA52193EA3B900D8CE14 /* OptionsViewController.xib in Resources */,
+				83EB0FE5193D517B00B4CE95 /* HelpViewController.xib in Resources */,
+				83AB869A1936A7D10017AF6A /* GridCell.xib in Resources */,
+				83D289EF19331812009A53F2 /* GameView.xib in Resources */,
+				8399B7391922A5B600C29958 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8399B74D1922A5B600C29958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8399B7271922A5B600C29958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83B5FE7A193FB42C0013F417 /* BoardState.m in Sources */,
+				83B5FE8D193FF0F00013F417 /* MulticPrefs.m in Sources */,
+				83C5092F192999C60030CEC4 /* GameViewController.m in Sources */,
+				83B5FE80193FB42C0013F417 /* Move.m in Sources */,
+				8399B73F1922A5B600C29958 /* AppDelegate.m in Sources */,
+				83E8E932199448DA0090568D /* MulticUtils.m in Sources */,
+				83B5FE84193FB42C0013F417 /* MulticLog.m in Sources */,
+				83B5FE7E193FB42C0013F417 /* Knobs.m in Sources */,
+				83B5FE88193FB42C0013F417 /* Player.m in Sources */,
+				83B5FE79193FB42C0013F417 /* BoardDef.m in Sources */,
+				83B5FE81193FB42C0013F417 /* MoveIterator.m in Sources */,
+				83B5FE7B193FB42C0013F417 /* Difficulty.m in Sources */,
+				83B5FE7C193FB42C0013F417 /* Four.m in Sources */,
+				83B5FE82193FB42C0013F417 /* MulticException.m in Sources */,
+				83B5FE86193FB42C0013F417 /* MulticRandomAlgo.m in Sources */,
+				83B2CA55193EA40700D8CE14 /* OptionsViewController.m in Sources */,
+				8399B73B1922A5B600C29958 /* main.m in Sources */,
+				83EB0FE4193D517B00B4CE95 /* HelpViewController.m in Sources */,
+				83B5FE85193FB42C0013F417 /* MulticMoveAlgo.m in Sources */,
+				83B5FE78193FB42C0013F417 /* AlternatingMutlicMoveAlgo.m in Sources */,
+				83B5FE8A193FB42C0013F417 /* XGameModel.m in Sources */,
+				83B5FE83193FB42C0013F417 /* MulticGameCell.m in Sources */,
+				83B5FE87193FB42C0013F417 /* MutableGameState.m in Sources */,
+				83B5FE7F193FB42C0013F417 /* MinimaxMulticMoveAlgo.m in Sources */,
+				83B5FE89193FB42C0013F417 /* XGameGridUiModel.m in Sources */,
+				83B5FE7D193FB42C0013F417 /* Knob.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8399B74B1922A5B600C29958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8399B7551922A5B600C29958 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8399B72A1922A5B600C29958 /* Multic */;
+			targetProxy = 8399B7541922A5B600C29958 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8399B7371922A5B600C29958 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8399B7381922A5B600C29958 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8399B75E1922A5B600C29958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8399B75F1922A5B600C29958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8399B7611922A5B600C29958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/Multic-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/amahfouz/code/tools/j2objc/include,
+				);
+				INFOPLIST_FILE = "src/Multic-Info.plist";
+				OTHER_LDFLAGS = (
+					"-L",
+					/Users/amahfouz/code/tools/j2objc/lib,
+					"-l",
+					jre_emul,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8399B7621922A5B600C29958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/Multic-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Users/amahfouz/code/tools/j2objc/include,
+				);
+				INFOPLIST_FILE = "src/Multic-Info.plist";
+				OTHER_LDFLAGS = (
+					"-L",
+					/Users/amahfouz/code/tools/j2objc/lib,
+					"-l",
+					jre_emul,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8399B7641922A5B600C29958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Multic.app/Multic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/Multic-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MulticTests/MulticTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		8399B7651922A5B600C29958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Multic.app/Multic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src/Multic-Prefix.pch";
+				INFOPLIST_FILE = "MulticTests/MulticTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8399B7261922A5B600C29958 /* Build configuration list for PBXProject "Multic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8399B75E1922A5B600C29958 /* Debug */,
+				8399B75F1922A5B600C29958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8399B7601922A5B600C29958 /* Build configuration list for PBXNativeTarget "Multic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8399B7611922A5B600C29958 /* Debug */,
+				8399B7621922A5B600C29958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8399B7631922A5B600C29958 /* Build configuration list for PBXNativeTarget "MulticTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8399B7641922A5B600C29958 /* Debug */,
+				8399B7651922A5B600C29958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8399B7231922A5B600C29958 /* Project object */;
+}
