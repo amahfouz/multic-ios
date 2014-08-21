@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GameViewController.h"
+#import "MulticPrefs.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,9 @@
     [self.window setRootViewController:navController];
     navController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [window makeKeyAndVisible];
+    
+    if ([MulticPrefs getAndSetIsFirstTime])
+        [gameViewController showInstructions];
     
     return YES;
 }

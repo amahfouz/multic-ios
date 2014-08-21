@@ -23,6 +23,7 @@
 #import "MulticGameCell.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 
 ////////////////////////////////////////////////////
 
@@ -30,11 +31,13 @@ static UIColor* HUMAN_COLOR;
 static UIColor* COMPUTER_COLOR;
 static UIColor* EMPTY_COLOR;
 
-static CGFloat GRID_INSET = 3;
-static CGFloat GRID_SPACING = 3;
+static CGFloat MIN_GRID_INSET = 1;
+static CGFloat GRID_SPACING = 1;
 
 @interface GameViewController() {
     MMUXGameModel* game;
+    UIEdgeInsets gridInsetObj;
+    CGFloat gridCellSize;
 }
 
 -(void)startNewGame;
@@ -55,7 +58,50 @@ static CGFloat GRID_SPACING = 3;
 
 @end
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+@implementation TouchInterceptingView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView* hitView = [super hitTest:point withEvent:event];
+   // NSLog(@"%@", hitView);
+    return hitView;
+}
+
+@end
+
+///////////////////////////////////////////////////////////////////////////////
+
+@implementation TouchInterceptingPicker
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touches began");
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touches ended");
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touches moved");
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touches canceled");
+    [super touchesCancelled:touches withEvent:event];
+}
+
+@end
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 @implementation GameViewController
 
@@ -70,9 +116,13 @@ static CGFloat GRID_SPACING = 3;
                               action:@selector(showMenu:)];
     
     self.navigationItem.rightBarButtonItem = settingsButton;
-    [self view].autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
+    gridInsetObj = UIEdgeInsetsMake
+        (MIN_GRID_INSET, MIN_GRID_INSET, MIN_GRID_INSET, MIN_GRID_INSET);
     
     [self startNewGame];
+    
+    [self view].autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     return self;
 }
@@ -95,6 +145,13 @@ static CGFloat GRID_SPACING = 3;
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [grid performBatchUpdates:nil completion:nil];
+    
+    CGRect navBarFrame = self.navigationController.navigationBar.frame;
+    CGFloat navBarHeight = navBarFrame.origin.y + navBarFrame.size.height;
+    NSLog(@"Did rotate %f", navBarHeight);
+    
+    [self.view setNeedsLayout];
+    [self computeGridSpacing];
 }
 
 - (void)viewDidLoad
@@ -114,16 +171,32 @@ static CGFloat GRID_SPACING = 3;
     
     secondPicker.layer.cornerRadius = 5;
     secondPicker.layer.masksToBounds = YES;
+/*
+    [firstPicker addTarget:self
+                    action:@selector(handleTouchDownPicker:)
+          forControlEvents:UIControlEventTouchDown];
+    [secondPicker addTarget:self
+                    action:@selector(handleTouchDownPicker:)
+          forControlEvents:UIControlEventTouchDown];
     
+    [firstPicker addTarget:self
+                    action:@selector(handleEndIxnPicker:)
+          forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside|UIControlEventTouchCancel];
+*/    
     [self syncViewWithModel];
-    
-    NSLog(@"View did load");
 }
 
 - (void)viewDidLayoutSubviews
 {
     // re-layout components according to size of screen
 
+    CGRect navBarFrame = self.navigationController.navigationBar.frame;
+    CGFloat navBarHeight = navBarFrame.origin.y + navBarFrame.size.height;
+    NSLog(@"Did layout %f", navBarHeight);
+
+    
+    [super viewDidLayoutSubviews];
+    
     UIInterfaceOrientation orientation
         = [[UIApplication sharedApplication] statusBarOrientation];
     
@@ -132,23 +205,39 @@ static CGFloat GRID_SPACING = 3;
     else
         [self setupViewsForPortraitOrientation];
     
+    [self computeGridSpacing];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)
+interfaceOrientation
+                                         duration:(NSTimeInterval)duration {
+
+//    CGRect navBarFrame = self.navigationController.navigationBar.frame;
+//    CGFloat navBarHeight = navBarFrame.origin.y + navBarFrame.size.height;
+//    NSLog(@"Will animate %f", navBarHeight);
+
 }
 
 - (void)setupViewsForLandscapeOrientation
 {
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
-    CGFloat navBarHeight = navBarFrame.origin.y + navBarFrame.size.height;
-    CGFloat availHeight = [self view].bounds.size.height - navBarHeight;
-    CGFloat availWidth = [self view].bounds.size.width;
+    
+    CGFloat navBarHeight = navBarFrame.size.height;
+    NSLog(@"Nav y = %f", navBarFrame.origin.y);
+    CGFloat navBarBottomY = navBarFrame.origin.y + navBarHeight;
+    CGFloat availHeight = [UIScreen mainScreen].bounds.size.width - navBarBottomY;
+    CGFloat availWidth = [UIScreen mainScreen].bounds.size.height;
+    
+    NSLog(@"View(%f, %f, %f, %f)", navBarHeight, navBarBottomY, availWidth, availHeight);
     
     // make grid square with side equal to shorter screen dim
     
-    CGFloat gridPadding = 2;
-    CGFloat gridSide = availHeight - 2 * gridPadding;
+    CGFloat padding = 2;
+    CGFloat gridSide = availHeight - 2 * padding;
 
     grid.frame = CGRectMake
-        (availWidth - gridPadding - gridSide,
-         gridPadding + navBarHeight,
+        (availWidth - padding - gridSide,
+         navBarBottomY + padding,
          gridSide,
          gridSide);
     toast.frame = grid.frame;
@@ -156,59 +245,78 @@ static CGFloat GRID_SPACING = 3;
     // message view spans rest of horizontal space
     
     CGFloat messageH = 34;
-    CGFloat messageW = availWidth - gridSide - 3 * gridPadding;
+    CGFloat messageW = availWidth - gridSide - 3 * padding;
     
     messageView.frame = CGRectMake
-        (gridPadding, gridPadding + navBarHeight, messageW, messageH);
+        (padding, navBarBottomY + padding, messageW, messageH);
 
     // position multiplication sign centered in remaining space
     
-    CGFloat remainingHeight = availHeight - messageH - 2 * gridPadding;
+    CGFloat remainingHeight = availHeight - messageH - 2 * padding;
     CGFloat centerX = messageView.center.x;
-    CGFloat centerY = navBarHeight + remainingHeight / 2;
+    CGFloat centerY = navBarBottomY + messageH + remainingHeight / 2;
     multiplicationSign.center = CGPointMake(centerX, centerY);
 
-    // position spinners vertically aligned
-    
-    CGFloat spinnerPaddingH = 6;
-    CGFloat spinnerPaddingW = 40;
     CGFloat spinnerH = firstPicker.frame.size.height;
 
-    CGFloat distFromCenterOfSignToCenterOfSpinner
-        = multiplicationSign.frame.size.height / 2
-        + spinnerPaddingH
-        + spinnerH / 2;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     
-    firstPicker.center = CGPointMake
-        (centerX, centerY - distFromCenterOfSignToCenterOfSpinner);
-    
-    CGRect tmpFrame = firstPicker.frame;
-    CGFloat widthReduction = 2 * spinnerPaddingW;
- 
-    firstPicker.frame = CGRectMake
-        (tmpFrame.origin.x + widthReduction / 2,
-         tmpFrame.origin.y,
-         tmpFrame.size.width - widthReduction,
-         spinnerH);
-    
-    secondPicker.center = CGPointMake
-        (centerX, centerY + distFromCenterOfSignToCenterOfSpinner);
- 
-    tmpFrame = secondPicker.frame;
-
-    secondPicker.frame = CGRectMake
-        (tmpFrame.origin.x + widthReduction / 2,
-         tmpFrame.origin.y,
-         tmpFrame.size.width - widthReduction,
-         spinnerH);
+        // position spinners vertically aligned
+        
+        CGFloat spinnerPaddingH = 6;
+        CGFloat spinnerPaddingW = 40;
+     
+        CGFloat distFromCenterOfSignToCenterOfSpinner
+            = multiplicationSign.frame.size.height / 2
+            + spinnerPaddingH
+            + spinnerH / 2;
+        
+        firstPicker.center = CGPointMake
+            (centerX, centerY - distFromCenterOfSignToCenterOfSpinner);
+        
+        CGFloat widthReduction = 2 * spinnerPaddingW;
+        CGFloat spinnerW = messageW - widthReduction;
+     
+        firstPicker.frame = CGRectMake
+            (centerX - spinnerW / 2,
+             firstPicker.frame.origin.y,
+             spinnerW,
+             spinnerH);
+        
+        secondPicker.center = CGPointMake
+            (centerX, centerY + distFromCenterOfSignToCenterOfSpinner);
+     
+        secondPicker.frame = CGRectMake
+            (centerX - spinnerW / 2,
+             secondPicker.frame.origin.y,
+             spinnerW,
+             spinnerH);
+    }
+    else
+    {
+        // position spinners horizontally aligned
+        
+        CGFloat spinnerPaddingW = 6;
+        CGFloat spinnerW
+            = (messageW - multiplicationSign.frame.size.width - 2 * spinnerPaddingW) / 2;
+        
+        CGFloat spinnerY = centerY - spinnerH / 2;
+        
+        firstPicker.frame = CGRectMake(padding, spinnerY, spinnerW, spinnerH);
+        secondPicker.frame = CGRectMake
+            (padding + messageW - spinnerW, spinnerY, spinnerW, spinnerH);
+    }
 }
 
 - (void)setupViewsForPortraitOrientation
 {
     CGRect navBarFrame = self.navigationController.navigationBar.frame;
     CGFloat navBarHeight = navBarFrame.origin.y + navBarFrame.size.height;
+
     CGFloat availHeight = [self view].bounds.size.height - navBarHeight;
     CGFloat availWidth = [self view].bounds.size.width;
+    
+    NSLog(@"View(%f, %f)", availWidth, availHeight);
 
     NSInteger numVertSpaces = 4; // top, under message, under spinner, under grid
     CGFloat minVertSpacing = 1; // vertical spacing betwen sub views
@@ -401,7 +509,7 @@ static CGFloat GRID_SPACING = 3;
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Instructions", @"Options", nil];
+                                                    otherButtonTitles:@"New Game", @"Instructions", @"Options", nil];
     
     [actionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem
                               animated:YES];
@@ -413,27 +521,42 @@ static CGFloat GRID_SPACING = 3;
     
     UINavigationController* navController
         = (UINavigationController* )self.parentViewController;
-    
-    UIViewController* modalController;
-
-    switch (buttonIndex) {
-        case 0:
-            modalController = [[HelpViewController alloc] init];
-            break;
-
-        case 1:
-            modalController = [[OptionsViewController alloc] init];
-            break;
-            
-        default:
-            modalController = nil;
-            break;
+ 
+    if (buttonIndex == 0)
+    {
+        UIAlertView *theAlert
+            = [[UIAlertView alloc] initWithTitle:@"Start New Game"
+                                         message:@"Abandon current game and start a new one?"
+                                        delegate:self
+                               cancelButtonTitle:@"Cancel"
+                               otherButtonTitles:@"New Game", nil];
+        [theAlert show];
     }
+    else if (buttonIndex == 1)
+    {
+        [navController pushViewController:[[HelpViewController alloc] init] animated:YES];
+    }
+    else if (buttonIndex == 2)
+    {
+        [navController pushViewController:[[OptionsViewController alloc] init] animated:YES];
+    }
+}
 
-    if (modalController != nil)
-        [navController pushViewController:modalController animated:YES];
+-(void)showInstructions
+{
+    UINavigationController* navController
+        = (UINavigationController* )self.parentViewController;
     
-    NSLog(@"Button %d", buttonIndex);
+    [navController pushViewController:[[HelpViewController alloc] init] animated:YES];
+}
+
+/////////////////////////////////////// UIAlertViewDelegate delegate
+#pragma mark UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+        [self startNewGame];
 }
 
 /////////////////////////////////////// UIPickerView datasource/delegate
@@ -482,15 +605,16 @@ static CGFloat GRID_SPACING = 3;
     @catch (MMCMulticException *exception) {
         [self showMessage:[exception getMessage] withPlayer:YES];
         MMCMulticGameCell* cell = [exception getCellIfAny];
-        IOSIntArray* cellIndexInArr = [IOSIntArray arrayWithInts:&(cell->cellIndex_) count:1];
-        [self flashCell:cellIndexInArr
-           withDuration:0.15
-           withCallback:^(BOOL finished) {
-               [pickerView selectRow:[game getSelectedIndexFor:knobLoc] inComponent:0 animated:YES];
-        }];
-    }
-    @finally {
-        [self updateViewState];
+        if (cell) {
+            IOSIntArray* cellIndexInArr
+                = [IOSIntArray arrayWithInts:&(cell->cellIndex_) count:1];
+            [self flashCell:cellIndexInArr
+               withDuration:0.15
+               withCallback:^(BOOL finished) {
+                   [pickerView selectRow:[game getSelectedIndexFor:knobLoc] inComponent:0 animated:YES];
+                   [self updateViewState];
+            }];
+        }
     }
 }
 
@@ -512,8 +636,9 @@ static CGFloat GRID_SPACING = 3;
     
     static NSString *cellIdentifier = @"GridCell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
-                                                                           forIndexPath:indexPath];
+    UICollectionViewCell *cell
+            = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier
+                                                        forIndexPath:indexPath];
     id<MMUXGameGridUiModel> uim = [game getGridUiModel];
     
     UILabel *cellLabelView = (UILabel *)[cell viewWithTag:1];
@@ -554,10 +679,7 @@ static CGFloat GRID_SPACING = 3;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat gridWidth =	collectionView.bounds.size.width;
-    CGFloat netContentWidth = gridWidth - (2 * GRID_INSET) - 5 * GRID_SPACING;
-    
-    return CGSizeMake(netContentWidth / 6, netContentWidth / 6);
+    return CGSizeMake(gridCellSize, gridCellSize);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
@@ -576,7 +698,22 @@ static CGFloat GRID_SPACING = 3;
                         layout:(UICollectionViewLayout*)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {
 
-    return UIEdgeInsetsMake(GRID_INSET, GRID_INSET, GRID_INSET, GRID_INSET);
+    return gridInsetObj;
+}
+
+-(void)computeGridSpacing
+{
+    CGFloat gridSide = grid.frame.size.width;
+    CGFloat netContentWidth = gridSide - (2 * MIN_GRID_INSET) - 5 * GRID_SPACING;
+    
+    gridCellSize = floor(netContentWidth / 6);
+    CGFloat gridInset = (gridSide - (6 * gridCellSize) - (5 * GRID_SPACING)) / 2;
+    
+    gridInsetObj = UIEdgeInsetsMake(gridInset, gridInset, gridInset, gridInset);
+    
+    NSLog(@"Grid(%f, %f, %f)", gridSide, gridCellSize, gridInset);
+    
+    [grid.collectionViewLayout invalidateLayout];
 }
 
 ////////////////////////////////
@@ -592,18 +729,18 @@ static CGFloat GRID_SPACING = 3;
     UICollectionViewCell* cellView = [grid cellForItemAtIndexPath:cellPath];
     UILabel *cellLabelView = (UILabel *)[cellView viewWithTag:1];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.6
-                                  delay:0.0
-                                options:UIViewAnimationOptionCurveEaseInOut
-                             animations:^{
-                                    cellLabelView.layer.backgroundColor
-                                        = [self getColorForCell:gridCellIfAny].CGColor;
-                             }
-                             completion:^(BOOL finished) {
-                                 [self updateViewState];
-                             }];
-    });
+    [UIView animateWithDuration:0.6
+                      delay:0.0
+                    options:UIViewAnimationOptionCurveEaseInOut
+                 animations:^{
+                        cellLabelView.layer.backgroundColor
+                            = [self getColorForCell:gridCellIfAny].CGColor;
+                 }
+                 completion:^(BOOL finished) {
+                     [self updateViewState];
+                 }];
+    
+    [grid performBatchUpdates:nil completion:nil];
 }
 
 -(void)knobStateChangedWithMMCKnob_LocationEnum:(MMCKnob_LocationEnum *)knobLoc

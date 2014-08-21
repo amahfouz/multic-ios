@@ -9,9 +9,10 @@
 #import "MulticPrefs.h"
 #import "Difficulty.h"
 
-#define OPTION__LEVEL @"level"
-#define DEFAULT_DIFFICULTY MMCDifficulty_MEDIUM
-#define OPTION__RANDOM_POS @"random_pos"
+static NSString*  OPTION__LEVEL = @"level";
+static MMCDifficulty  DEFAULT_DIFFICULTY = MMCDifficulty_MEDIUM;
+static NSString* OPTION__RANDOM_POS =  @"random_pos";
+static NSString* KEY_IS_FIRST_LAUNCH = @"is_first_launch";
 
 @implementation MulticPrefs
 
@@ -66,6 +67,23 @@
 +(BOOL)getHumanStarts
 {
     return YES;
+}
+
++(BOOL)getAndSetIsFirstTime
+{
+    NSUserDefaults* options = [NSUserDefaults standardUserDefaults];
+    NSNumber* isFirstLaunchAsNum = [options objectForKey:KEY_IS_FIRST_LAUNCH];
+    
+    BOOL isFirstLaunch
+        = isFirstLaunchAsNum
+        ? [isFirstLaunchAsNum boolValue]
+        : YES;
+    
+    [options setObject:[NSNumber numberWithBool:NO]
+                forKey:KEY_IS_FIRST_LAUNCH];
+    [options synchronize];
+    
+    return isFirstLaunch;
 }
 
 @end

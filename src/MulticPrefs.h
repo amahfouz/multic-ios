@@ -16,6 +16,7 @@
 +(MMCDifficulty)getDifficultyAsInt;
 +(BOOL)getIsRandomFirstPos;
 +(BOOL)getHumanStarts;
++(BOOL)getAndSetIsFirstTime;
 
 +(void)setDifficulty:(MMCDifficulty)difficulty;
 +(void)setIsRandomFirstPos:(BOOL)isRandom;

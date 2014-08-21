@@ -11,7 +11,7 @@
 #import "XGameModel.h"
 #import "MulticLog.h"
 
-@interface GameViewController : UIViewController <UIPickerViewDataSource,  UIPickerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, MMUXGameModel_Listener, MMUMulticLog> {
+@interface GameViewController : UIViewController <UIPickerViewDataSource,  UIPickerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIAlertViewDelegate, MMUXGameModel_Listener, MMUMulticLog> {
 
     __weak IBOutlet UILabel *messageView;
     __weak IBOutlet UIPickerView *firstPicker;
@@ -23,5 +23,15 @@
 
 - (id)init;
 - (IBAction)onNewGameTapped:(id)sender;
+-(void)showInstructions;
+
+@end
+
+
+@interface TouchInterceptingView : UIView
+
+@end
+
+@interface TouchInterceptingPicker : UIPickerView
 
 @end
